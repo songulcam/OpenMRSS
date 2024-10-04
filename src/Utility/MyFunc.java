@@ -43,5 +43,4 @@ public class MyFunc {
             throw new RuntimeException(e);
         }
     }
-    //TODO: Bu class a DOKUNMAYINIZ!
 }

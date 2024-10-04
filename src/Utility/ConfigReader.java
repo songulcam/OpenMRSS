@@ -18,5 +18,4 @@ public class ConfigReader {
     public static String getProperty(String keyword){
         return properties.getProperty(keyword);
     }
-    //TODO: bu class a Dokunmayınız!!
 }
