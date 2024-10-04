@@ -18,7 +18,7 @@ public class BaseDriver {
     public static Logger logger= LogManager.getLogger();
 
     @BeforeClass
-    public void beforeClass(){
+    public void setUp(){
         switch (ConfigReader.getProperty("browser").toLowerCase()){
             case "firefox":driver=new FirefoxDriver(); break;
             case "edge":driver=new EdgeDriver(); break;
@@ -31,8 +31,8 @@ public class BaseDriver {
     }
 
     @AfterClass
-    public void afterClass() {
-        MyFunc.Wait(2);
+    public void tearDown() {
+        MyFunc.Wait(4);
         driver.quit();
     }
 }
