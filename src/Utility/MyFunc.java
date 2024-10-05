@@ -22,17 +22,17 @@ public class MyFunc {
         }
     }
 
-    public void scrollElement(WebElement element) {
+    public static void scrollElement(WebElement element) {
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("arguments[0].scrollIntoView();", element);
     }
 
-    public void jsClick(WebElement element) {
+    public static void jsClick(WebElement element) {
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("arguments[0].click();", element);
     }
 
-    public void saveFileToDesktop(File fileInMemory){
+    public static void saveFileToDesktop(File fileInMemory){
         LocalDateTime localDateTime=LocalDateTime.now();
         DateTimeFormatter formater=DateTimeFormatter.ofPattern("dd.MM.yyyy.HH.mm.ss");
         fileInMemory = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
