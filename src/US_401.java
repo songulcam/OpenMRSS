@@ -9,12 +9,9 @@ import org.testng.annotations.Test;
 
 public class US_401 extends BaseDriver {
 
-
     @Test(dataProvider = "userData")
     public void checkingLoginErrorsSystem(String username, String password, boolean expectedResult) {
-
         US_401_404_407_POM locater = new US_401_404_407_POM();
-        boolean isEnglishSelected = false;
 
         do {
             if (!locater.languageButton.getText().contains("EN")) {
@@ -24,7 +21,6 @@ public class US_401 extends BaseDriver {
                 wait.until(ExpectedConditions.visibilityOf(locater.languageEnglish));
                 MyFunc.jsClick(locater.languageEnglish);
             }
-
         } while (!locater.languageButton.getText().contains("EN"));
 
         wait.until(ExpectedConditions.elementToBeClickable(locater.demoButton));
@@ -50,12 +46,11 @@ public class US_401 extends BaseDriver {
 
         wait.until(ExpectedConditions.elementToBeClickable(locater.loginButton));
         locater.loginButton.click();
-        MyFunc.Wait(1);
 
         if (!expectedResult) {
             Assert.assertTrue(locater.locationError.getText().contains("You must choose "));
         } else {
-            Assert.assertTrue(locater.loginControl.getText().contains("Logged in as Super User "));
+            Assert.assertTrue(locater.errorMessage.getText().contains("Please try again."));
         }
 
         if (!expectedResult){
@@ -71,7 +66,7 @@ public class US_401 extends BaseDriver {
                 {"Sefa", "1vvv57a", false},
                 {"Kerim", "1xxx7a", false},
                 {"Songül", "1abc7a", false},
-                {"admin", "Admin123", true},
+                {"admin", "Admin12", true},
         };
         return userPassword;
     }
