@@ -7,7 +7,7 @@ import org.openqa.selenium.support.PageFactory;
 
 public class US_401_404_407_POM {
 
-    public US_401_404_407_POM(){
+    public US_401_404_407_POM() {
         PageFactory.initElements(BaseDriver.driver, this);
     }
 
@@ -26,13 +26,13 @@ public class US_401_404_407_POM {
     @FindBy(xpath = "(//div[@class='elementor-button-wrapper'])[4]/a")
     public WebElement enterOpenMrs2;
 
-    @FindBy(id="username")
+    @FindBy(id = "username")
     public WebElement userName;
 
-    @FindBy(id="password")
+    @FindBy(id = "password")
     public WebElement password;
 
-    @FindBy(id="loginButton")
+    @FindBy(id = "loginButton")
     public WebElement loginButton;
 
     @FindBy(id = "error-message")
