@@ -2,8 +2,6 @@ import Pages.US_401_404_407_POM;
 import Utility.BaseDriver;
 import Utility.ConfigReader;
 import Utility.MyFunc;
-import org.openqa.selenium.TimeoutException;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
@@ -17,16 +15,16 @@ public class US_401 extends BaseDriver {
         US_401_404_407_POM locater = new US_401_404_407_POM();
         boolean isEnglishSelected = false;
 
-        driver.get(ConfigReader.getProperty("URL"));
-        wait.until(ExpectedConditions.elementToBeClickable(locater.languageButton));
+        do {
+            if (!locater.languageButton.getText().contains("EN")) {
+                wait.until(ExpectedConditions.elementToBeClickable(locater.languageButton));
+                locater.languageButton.click();
 
-        while (!isEnglishSelected) {
-            MyFunc.jsClick(locater.languageButton);
-            wait.until(ExpectedConditions.visibilityOf(locater.languageEnglish));
-            MyFunc.jsClick(locater.languageEnglish);
-            isEnglishSelected = checkEnglish();
-            MyFunc.Wait(2);
-        }
+                wait.until(ExpectedConditions.visibilityOf(locater.languageEnglish));
+                MyFunc.jsClick(locater.languageEnglish);
+            }
+
+        } while (!locater.languageButton.getText().contains("EN"));
 
         wait.until(ExpectedConditions.elementToBeClickable(locater.demoButton));
         locater.demoButton.click();
@@ -34,6 +32,7 @@ public class US_401 extends BaseDriver {
         MyFunc.scrollElement(locater.exploreOpenMrs2);
         wait.until(ExpectedConditions.visibilityOf(locater.exploreOpenMrs2));
         locater.exploreOpenMrs2.click();
+
         wait.until(ExpectedConditions.elementToBeClickable(locater.enterOpenMrs2));
         locater.enterOpenMrs2.click();
 
@@ -43,6 +42,12 @@ public class US_401 extends BaseDriver {
         wait.until(ExpectedConditions.visibilityOf(locater.password));
         locater.password.sendKeys(password);
 
+        if (expectedResult) {
+            wait.until(ExpectedConditions.elementToBeClickable(locater.inpatientWard));
+            locater.inpatientWard.click();
+        }
+
+        wait.until(ExpectedConditions.elementToBeClickable(locater.loginButton));
         locater.loginButton.click();
         MyFunc.Wait(1);
 
@@ -50,6 +55,10 @@ public class US_401 extends BaseDriver {
             Assert.assertTrue(locater.locationError.getText().contains("You must choose "));
         } else {
             Assert.assertTrue(locater.loginControl.getText().contains("Logged in as Super User "));
+        }
+
+        if (!expectedResult){
+            driver.get(ConfigReader.getProperty("URL"));
         }
     }
 
@@ -64,16 +73,5 @@ public class US_401 extends BaseDriver {
                 {"admin", "Admin123", true},
         };
         return userPassword;
-    }
-
-    private boolean checkEnglish() {
-        US_401_404_407_POM locater = new US_401_404_407_POM();
-        try {
-            WebElement demoEnglishText = wait.until(ExpectedConditions.visibilityOf(locater.demoButton));
-            String text = demoEnglishText.getText().trim();
-            return text.contains("Demo");
-        } catch (TimeoutException e) {
-            return false;
-        }
     }
 }
