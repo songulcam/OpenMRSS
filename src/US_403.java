@@ -25,7 +25,6 @@ public class US_403 extends BaseDriver {
 
             wait.until(ExpectedConditions.elementToBeClickable(element.languageBtn));
             element.languageBtn.click();
-            System.out.println(element.languageBtn.getText());
 
         } while (!element.languageBtn.getText().contains("EN"));
 
