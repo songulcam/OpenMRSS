@@ -47,7 +47,6 @@ public class US_402 extends BaseDriver {
 
         wait.until(ExpectedConditions.elementToBeClickable(element.logInButton));
         element.logInButton.click();
-        MyFunc.Wait(1);
 
         if (!expectedResult) {
             Assert.assertTrue(element.errorMessage.getText().contains("Please try again."));
