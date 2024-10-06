@@ -19,7 +19,7 @@ public class US_403_409_410_POM {
     @FindBy(css = "[data-gt-lang='en']")
     public WebElement languageEn;
 
-    @FindBy(css = "[class='zak-button']")
+    @FindBy(partialLinkText = "Demo")
     public WebElement demoBtn;
 
     @FindBy(xpath = "(//div[@class='elementor-button-wrapper'])[4]/a")
