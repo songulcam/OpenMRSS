@@ -2,6 +2,8 @@ import Pages.US_401_404_407_POM;
 import Utility.BaseDriver;
 import Utility.ConfigReader;
 import Utility.MyFunc;
+import org.openqa.selenium.TimeoutException;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
@@ -9,15 +11,21 @@ import org.testng.annotations.Test;
 
 public class US_401 extends BaseDriver {
 
+    US_401_404_407_POM locater = new US_401_404_407_POM();
+    boolean isEnglishSelected=false;
+
     @Test(dataProvider = "userData")
     public void checkingLoginErrorsSystem(String username, String password, boolean expectedResult) {
-        US_401_404_407_POM locater = new US_401_404_407_POM();
 
-        for (int i = 0; i < 2; i++) {
+        driver.get(ConfigReader.getProperty("URL"));
+        MyFunc.Wait(4);
+
+        while (!isEnglishSelected) {
             wait.until(ExpectedConditions.elementToBeClickable(locater.languageButton));
-            locater.languageButton.click();
+            MyFunc.jsClick(locater.languageButton);
             wait.until(ExpectedConditions.visibilityOf(locater.languageEnglish));
-            locater.languageEnglish.click();
+            MyFunc.jsClick(locater.languageEnglish);
+            isEnglishSelected = checkEnglish();
         }
 
         wait.until(ExpectedConditions.elementToBeClickable(locater.demoButton));
@@ -52,7 +60,16 @@ public class US_401 extends BaseDriver {
                 {"Songül", "1abc7a", false},
                 {"admin", "Admin123", true},
         };
-
         return userPassword;
+    }
+
+    private boolean checkEnglish(){
+        try {
+            WebElement demoEnglishText=wait.until(ExpectedConditions.visibilityOf(locater.demoButton));
+            String text=demoEnglishText.getText();
+            return text.contains("Demo");
+        }catch (TimeoutException e){
+             return false;
+        }
     }
 }
