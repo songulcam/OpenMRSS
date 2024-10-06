@@ -2,8 +2,6 @@ import Pages.US_403_409_410_POM;
 import Utility.BaseDriver;
 import Utility.ConfigReader;
 import Utility.MyFunc;
-import org.openqa.selenium.By;
-import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -11,18 +9,25 @@ import org.testng.annotations.Test;
 public class US_403 extends BaseDriver {
 
     @Test(groups = "Smoke Test")
-    public void logOut(){
-        US_403_409_410_POM element=new US_403_409_410_POM();
+    public void logOut() {
+        US_403_409_410_POM element = new US_403_409_410_POM();
 
         wait.until(ExpectedConditions.urlToBe(ConfigReader.getProperty("URL")));
 
-        for (int i = 0; i < 2; i++) {
+        do {
+            if (!element.languageBtn.getText().contains("EN")) {
+                wait.until(ExpectedConditions.elementToBeClickable(element.languageBtn));
+                element.languageBtn.click();
+
+                wait.until(ExpectedConditions.visibilityOf(element.languageEn));
+                MyFunc.jsClick(element.languageEn);
+            }
+
             wait.until(ExpectedConditions.elementToBeClickable(element.languageBtn));
             element.languageBtn.click();
+            System.out.println(element.languageBtn.getText());
 
-            wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("[data-gt-lang='en']")));
-            MyFunc.jsClick(element.languageEn);
-        }
+        } while (!element.languageBtn.getText().contains("EN"));
 
         wait.until(ExpectedConditions.elementToBeClickable(element.demoBtn));
         element.demoBtn.click();
@@ -38,8 +43,8 @@ public class US_403 extends BaseDriver {
         wait.until(ExpectedConditions.elementToBeClickable(element.password));
         element.password.sendKeys(ConfigReader.getProperty("password"));
 
-        int randomLocation= (int)(Math.random()*element.locations.size());
-        String keyWordStr=element.locations.get(randomLocation).getText();
+        int randomLocation = (int) (Math.random() * element.locations.size());
+        String keyWordStr = element.locations.get(randomLocation).getText();
 
         wait.until(ExpectedConditions.elementToBeClickable(element.locations.get(randomLocation)));
         element.locations.get(randomLocation).click();
