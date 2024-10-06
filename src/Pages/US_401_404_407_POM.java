@@ -10,20 +10,19 @@ public class US_401_404_407_POM {
     public US_401_404_407_POM(){
         PageFactory.initElements(BaseDriver.driver, this);
     }
-
-    @FindBy(xpath="//span[text()='tr']")
+    @FindBy(css = "[class='gt-current-lang']")
     public WebElement languageButton;
 
     @FindBy(css = "[data-gt-lang='en']")
     public WebElement languageEnglish;
 
-    @FindBy(css = "[class='zak-button']")
+    @FindBy(partialLinkText = "Demo")
     public WebElement demoButton;
 
-    @FindBy(xpath = "//*[.='Explore OpenMRS 2']")
+    @FindBy(xpath = "(//span[@class='elementor-button-text'])[2]")
     public WebElement exploreOpenMrs2;
 
-    @FindBy(xpath = "//*[.='Enter the OpenMRS 2 Demo']")
+    @FindBy(xpath = "(//div[@class='elementor-button-wrapper'])[4]/a")
     public WebElement enterOpenMrs2;
 
     @FindBy(id="username")
