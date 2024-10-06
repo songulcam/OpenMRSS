@@ -11,21 +11,21 @@ import org.testng.annotations.Test;
 
 public class US_401 extends BaseDriver {
 
-    US_401_404_407_POM locater = new US_401_404_407_POM();
-    boolean isEnglishSelected=false;
-
     @Test(dataProvider = "userData")
     public void checkingLoginErrorsSystem(String username, String password, boolean expectedResult) {
 
+        US_401_404_407_POM locater = new US_401_404_407_POM();
+        boolean isEnglishSelected = false;
+
         driver.get(ConfigReader.getProperty("URL"));
-        MyFunc.Wait(4);
+        wait.until(ExpectedConditions.elementToBeClickable(locater.languageButton));
 
         while (!isEnglishSelected) {
-            wait.until(ExpectedConditions.elementToBeClickable(locater.languageButton));
             MyFunc.jsClick(locater.languageButton);
             wait.until(ExpectedConditions.visibilityOf(locater.languageEnglish));
             MyFunc.jsClick(locater.languageEnglish);
             isEnglishSelected = checkEnglish();
+            MyFunc.Wait(2);
         }
 
         wait.until(ExpectedConditions.elementToBeClickable(locater.demoButton));
@@ -63,13 +63,14 @@ public class US_401 extends BaseDriver {
         return userPassword;
     }
 
-    private boolean checkEnglish(){
+    private boolean checkEnglish() {
+        US_401_404_407_POM locater = new US_401_404_407_POM();
         try {
-            WebElement demoEnglishText=wait.until(ExpectedConditions.visibilityOf(locater.demoButton));
-            String text=demoEnglishText.getText();
+            WebElement demoEnglishText = wait.until(ExpectedConditions.visibilityOf(locater.demoButton));
+            String text = demoEnglishText.getText().trim();
             return text.contains("Demo");
-        }catch (TimeoutException e){
-             return false;
+        } catch (TimeoutException e) {
+            return false;
         }
     }
 }
