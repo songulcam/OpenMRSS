@@ -29,6 +29,7 @@ public class US_401 extends BaseDriver {
         wait.until(ExpectedConditions.elementToBeClickable(locater.enterOpenMrs2));
         locater.enterOpenMrs2.click();
 
+
         if (expectedResult==false){
             wait.until(ExpectedConditions.urlToBe(ConfigReader.getProperty("LoginURL")));
             locater.userName.sendKeys(username);
