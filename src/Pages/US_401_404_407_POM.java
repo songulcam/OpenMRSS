@@ -10,6 +10,7 @@ public class US_401_404_407_POM {
     public US_401_404_407_POM(){
         PageFactory.initElements(BaseDriver.driver, this);
     }
+
     @FindBy(css = "[class='gt-current-lang']")
     public WebElement languageButton;
 
