@@ -49,12 +49,12 @@ public class US_402 extends BaseDriver {
         element.logInButton.click();
         MyFunc.Wait(1);
 
-        if (expectedResult) {
+        if (!expectedResult) {
             Assert.assertTrue(element.errorMessage.getText().contains("Please try again."));
         }
-//        else {
-//            Assert.assertTrue(element.loginControl.getText().contains("Logged in as Super User"));
-//        }
+        else {
+            Assert.assertTrue(element.loginControl.getText().contains("Logged in as Super User"));
+        }
 
         if (!expectedResult) {
             driver.get(ConfigReader.getProperty("URL"));
