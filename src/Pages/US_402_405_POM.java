@@ -5,6 +5,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import java.util.List;
+
 public class US_402_405_POM extends BaseDriver {
 
     public US_402_405_POM() {
@@ -26,6 +28,9 @@ public class US_402_405_POM extends BaseDriver {
     @FindBy(xpath = "(//div[@class='elementor-button-wrapper'])[4]/a")
     public WebElement enterOpenMRSDemo;
 
+    @FindBy(xpath = "//form[@id='login-form']//legend")
+    public WebElement loginText;
+
     @FindBy(id = "username")
     public WebElement username;
 
@@ -34,6 +39,9 @@ public class US_402_405_POM extends BaseDriver {
 
     @FindBy(id = "Inpatient Ward")
     public WebElement inpatientWard;
+
+    @FindBy(css = "ul[id='sessionLocation'] li")
+    public List<WebElement>lacationList;
 
     @FindBy(id = "loginButton")
     public WebElement logInButton;
