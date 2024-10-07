@@ -10,7 +10,7 @@ import org.testng.annotations.Test;
 
 public class US_402 extends BaseDriver {
 
-    @Test(dataProvider = "userPassword")
+    @Test(dataProvider = "userPassword",groups = "Smoke Test")
     public void loginPositive(String username, String password, boolean expectedResult) {
 
         US_402_405_POM element = new US_402_405_POM();
