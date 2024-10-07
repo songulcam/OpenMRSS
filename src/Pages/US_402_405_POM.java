@@ -26,6 +26,9 @@ public class US_402_405_POM extends BaseDriver {
     @FindBy(xpath = "(//div[@class='elementor-button-wrapper'])[4]/a")
     public WebElement enterOpenMRSDemo;
 
+    @FindBy(xpath = "//form[@id='login-form']//legend")
+    public WebElement loginText;
+
     @FindBy(id = "username")
     public WebElement username;
 
