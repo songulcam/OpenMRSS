@@ -9,12 +9,13 @@ import org.testng.annotations.Test;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class US_404 extends BaseDriver {
+    public String patientID;
 
     @Test
     public void patientRegistration() {
         US_401_404_407_POM locater = new US_401_404_407_POM();
 
-        driver.get(ConfigReader.getProperty("URL3"));
+        driver.get(ConfigReader.getProperty("loginURL"));
 
         wait.until(ExpectedConditions.visibilityOf(locater.userName));
         locater.userName.sendKeys(ConfigReader.getProperty("username"));
@@ -112,6 +113,7 @@ public class US_404 extends BaseDriver {
         Assert.assertTrue(locater.familyNameControl.isDisplayed());
 
         wait.until(ExpectedConditions.visibilityOf(locater.IDcontrol));
+        patientID=locater.IDcontrol.getText();
         Assert.assertTrue(locater.IDcontrol.isDisplayed());
     }
 }
