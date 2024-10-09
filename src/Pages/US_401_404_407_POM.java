@@ -142,6 +142,9 @@ public class US_401_404_407_POM {
     @FindBy(id = "delete-reason")
     public WebElement reasonBox;
 
-    @FindBy(xpath = "(//*[text()='Confirm'])[3]")
+    @FindBy(xpath = "//div[@tabindex='-1']//button")
     public WebElement  buttonConfirm;
+
+    @FindBy(css = "[class='dataTables_empty']")
+    public WebElement  noPatientsFound;
 }
