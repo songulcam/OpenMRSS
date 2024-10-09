@@ -9,7 +9,7 @@ import org.testng.annotations.Test;
 
 public class US_401 extends BaseDriver {
 
-    @Test(dataProvider = "userData")
+    @Test(dataProvider = "userData", groups = "Smoke Test")
     public void checkingLoginErrorsSystem(String username, String password, boolean expectedResult) {
         US_401_404_407_POM locator = new US_401_404_407_POM();
 
