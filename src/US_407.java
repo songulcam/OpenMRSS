@@ -1,7 +1,6 @@
 import Pages.US_401_404_407_POM;
 import Utility.BaseDriver;
 import Utility.ConfigReader;
-import Utility.MyFunc;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
