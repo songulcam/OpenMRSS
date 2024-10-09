@@ -42,4 +42,19 @@ public class US_403_409_410_POM {
 
     @FindBy(css = "[class='nav-item logout']>a")
     public WebElement logOutBtn;
+
+    @FindBy(xpath = "(//div[@id='content']//a)[5]")
+    public WebElement appointmentSchedulingBtn;
+
+    @FindBy(xpath = "(//div[@id='apps']//a)[3]")
+    public WebElement manageAppointmentsBtn;
+
+    @FindBy(id = "patient-search")
+    public WebElement searchById;
+
+    @FindBy(css = "[class='odd']")
+    public WebElement patientSearchResult;
+
+    @FindBy(id = "time-zone-warning")
+    public WebElement timeZoneWarning;
 }

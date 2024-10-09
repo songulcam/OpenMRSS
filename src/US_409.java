@@ -7,31 +7,12 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class US_409 extends BaseDriver {
-
+// idlerin locaterı //div[@id='patient-search-results']//td[starts-with(text(),'100')]
     @Test(groups = "Regression Test")
     public void patientMerge(){
         US_403_409_410_POM element = new US_403_409_410_POM();
 
-        wait.until(ExpectedConditions.urlToBe(ConfigReader.getProperty("URL")));
-
-        do {
-            if (!element.languageBtn.getText().contains("EN")) {
-                wait.until(ExpectedConditions.elementToBeClickable(element.languageBtn));
-                element.languageBtn.click();
-
-                wait.until(ExpectedConditions.visibilityOf(element.languageEn));
-                MyFunc.jsClick(element.languageEn);
-            }
-            wait.until(ExpectedConditions.elementToBeClickable(element.languageBtn));
-            element.languageBtn.click();
-        } while (!element.languageBtn.getText().contains("EN"));
-
-        wait.until(ExpectedConditions.elementToBeClickable(element.demoBtn));
-        element.demoBtn.click();
-
-        wait.until(ExpectedConditions.urlToBe(ConfigReader.getProperty("demoURL")));
-        MyFunc.scrollElement(element.OpenMRS2DemoBtn);
-        element.OpenMRS2DemoBtn.click();
+        driver.get(ConfigReader.getProperty("loginURL"));
 
         wait.until(ExpectedConditions.urlToBe(ConfigReader.getProperty("loginURL")));
         wait.until(ExpectedConditions.elementToBeClickable(element.username));
