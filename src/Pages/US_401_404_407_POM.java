@@ -43,11 +43,20 @@ public class US_401_404_407_POM {
     @FindBy(id = "sessionLocationError")
     public WebElement locationError;
 
+    @FindBy(css = "[id='apps'] a")
+    public WebElement findPatientButton;
+
+    @FindBy(css = "[id='content'] h2")
+    public WebElement findPatientPageControl;
+
     @FindBy(id = "Inpatient Ward")
     public WebElement inpatientWard;
 
     @FindBy(xpath = "//div[@id='content']//h4")
     public WebElement loginControl;
+
+    @FindBy(css = "[id='navbarSupportedContent'] ul li")
+    public WebElement adminControl;
 
     @FindBy(css = "[id='sessionLocation'] li")
     public List<WebElement> locations;
@@ -114,4 +123,25 @@ public class US_401_404_407_POM {
 
     @FindBy(css = "[class='float-sm-right']")
     public WebElement IDcontrol;
+
+    @FindBy(id = "patient-search")
+    public WebElement searchBox;
+
+    @FindBy(xpath = "(//tr[@class='odd']//td)[1]")
+    public WebElement patientInformation;
+
+    @FindBy(xpath = "[id='breadcrumbs'] > :nth-child(2)")
+    public WebElement patientVerification;
+
+    @FindBy(id = "org.openmrs.module.coreapps.deletePatient")
+    public WebElement deletePatient;
+
+    @FindBy(css = "[id='delete-patient-creation-dialog'] h3")
+    public WebElement deleteWindowControl;
+
+    @FindBy(id = "delete-reason")
+    public WebElement reasonBox;
+
+    @FindBy(xpath = "(//*[text()='Confirm'])[3]")
+    public WebElement  buttonConfirm;
 }
