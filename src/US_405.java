@@ -41,7 +41,7 @@ public class US_405 extends BaseDriver {
             wait.until(ExpectedConditions.visibilityOf(element.password));
             element.password.sendKeys(ConfigReader.getProperty("password"));
 
-            element.lacationList.get(randomLacation()).click();
+            element.lacationList.get(randomLocation()).click();
 
             wait.until(ExpectedConditions.elementToBeClickable(element.logInButton));
             element.logInButton.click();
@@ -70,7 +70,7 @@ public class US_405 extends BaseDriver {
         element.myAccountLink.click();
     }
 
-    public static int randomLacation() {
+    public static int randomLocation() {
         US_402_405_POM element = new US_402_405_POM();
         return (int) (Math.random() * element.lacationList.size());
     }
