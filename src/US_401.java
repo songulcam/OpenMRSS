@@ -11,46 +11,46 @@ public class US_401 extends BaseDriver {
 
     @Test(dataProvider = "userData")
     public void checkingLoginErrorsSystem(String username, String password, boolean expectedResult) {
-        US_401_404_407_POM locater = new US_401_404_407_POM();
+        US_401_404_407_POM locator = new US_401_404_407_POM();
 
         do {
-            if (!locater.languageButton.getText().contains("EN")) {
-                wait.until(ExpectedConditions.elementToBeClickable(locater.languageButton));
-                locater.languageButton.click();
+            if (!locator.languageButton.getText().contains("EN")) {
+                wait.until(ExpectedConditions.elementToBeClickable(locator.languageButton));
+                locator.languageButton.click();
 
-                wait.until(ExpectedConditions.visibilityOf(locater.languageEnglish));
-                MyFunc.jsClick(locater.languageEnglish);
+                wait.until(ExpectedConditions.visibilityOf(locator.languageEnglish));
+                MyFunc.jsClick(locator.languageEnglish);
             }
-        } while (!locater.languageButton.getText().contains("EN"));
+        } while (!locator.languageButton.getText().contains("EN"));
 
-        wait.until(ExpectedConditions.elementToBeClickable(locater.demoButton));
-        locater.demoButton.click();
+        wait.until(ExpectedConditions.elementToBeClickable(locator.demoButton));
+        locator.demoButton.click();
 
-        MyFunc.scrollElement(locater.exploreOpenMrs2);
-        wait.until(ExpectedConditions.visibilityOf(locater.exploreOpenMrs2));
-        locater.exploreOpenMrs2.click();
+        MyFunc.scrollElement(locator.exploreOpenMrs2);
+        wait.until(ExpectedConditions.visibilityOf(locator.exploreOpenMrs2));
+        locator.exploreOpenMrs2.click();
 
-        wait.until(ExpectedConditions.elementToBeClickable(locater.enterOpenMrs2));
-        locater.enterOpenMrs2.click();
+        wait.until(ExpectedConditions.elementToBeClickable(locator.enterOpenMrs2));
+        locator.enterOpenMrs2.click();
 
-        wait.until(ExpectedConditions.visibilityOf(locater.userName));
-        locater.userName.sendKeys(username);
+        wait.until(ExpectedConditions.visibilityOf(locator.userName));
+        locator.userName.sendKeys(username);
 
-        wait.until(ExpectedConditions.visibilityOf(locater.password));
-        locater.password.sendKeys(password);
+        wait.until(ExpectedConditions.visibilityOf(locator.password));
+        locator.password.sendKeys(password);
 
         if (expectedResult) {
-            wait.until(ExpectedConditions.elementToBeClickable(locater.inpatientWard));
-            locater.inpatientWard.click();
+            wait.until(ExpectedConditions.elementToBeClickable(locator.inpatientWard));
+            locator.inpatientWard.click();
         }
 
-        wait.until(ExpectedConditions.elementToBeClickable(locater.loginButton));
-        locater.loginButton.click();
+        wait.until(ExpectedConditions.elementToBeClickable(locator.loginButton));
+        locator.loginButton.click();
 
         if (!expectedResult) {
-            Assert.assertTrue(locater.locationError.getText().contains("You must choose "));
+            Assert.assertTrue(locator.locationError.getText().contains("You must choose "));
         } else {
-            Assert.assertTrue(locater.errorMessage.getText().contains("Please try again."));
+            Assert.assertTrue(locator.errorMessage.getText().contains("Please try again."));
         }
 
         if (!expectedResult){
