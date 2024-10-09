@@ -47,8 +47,6 @@ public class US_407 extends BaseDriver {
         wait.until(ExpectedConditions.visibilityOf(locater.patientInformation));
         locater.patientInformation.click();
 
-        //DOĞRULAMA EKLENECEK
-
         wait.until(ExpectedConditions.elementToBeClickable(locater.deletePatient));
         locater.deletePatient.click();
 
@@ -58,7 +56,13 @@ public class US_407 extends BaseDriver {
         wait.until(ExpectedConditions.elementToBeClickable(locater.reasonBox));
         locater.reasonBox.sendKeys(ConfigReader.getProperty("sampleReason"));
 
-        wait.until(ExpectedConditions.elementToBeClickable(locater.confirmButton));
-        MyFunc.jsClick(locater.confirmButton);
+        wait.until(ExpectedConditions.elementToBeClickable(locater.buttonConfirm));
+        locater.buttonConfirm.click();
+
+        wait.until(ExpectedConditions.elementToBeClickable(locater.searchBox));
+        locater.searchBox.sendKeys(ConfigReader.getProperty("usernameSecond"));
+
+        wait.until(ExpectedConditions.visibilityOf(locater.noPatientsFound));
+        Assert.assertTrue(locater.noPatientsFound.getText().contains("No matching"));
     }
 }

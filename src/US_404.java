@@ -113,7 +113,7 @@ public class US_404 extends BaseDriver {
         Assert.assertTrue(locater.familyNameControl.isDisplayed());
 
         wait.until(ExpectedConditions.visibilityOf(locater.IDcontrol));
-        patientID=locater.IDcontrol.getText();
+        patientID = locater.IDcontrol.getText();
         Assert.assertTrue(locater.IDcontrol.isDisplayed());
     }
 }
