@@ -23,8 +23,4 @@ public class MyFunc {
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("arguments[0].click();", element);
     }
-
-    public static int randomLocation(int number) {
-        return (int) (Math.random() * number);
-    }
 }
