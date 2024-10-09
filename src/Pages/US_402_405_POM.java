@@ -41,7 +41,7 @@ public class US_402_405_POM extends BaseDriver {
     public WebElement inpatientWard;
 
     @FindBy(css = "ul[id='sessionLocation'] li")
-    public List<WebElement>lacationList;
+    public List<WebElement> lacationList;
 
     @FindBy(id = "loginButton")
     public WebElement logInButton;
@@ -53,5 +53,20 @@ public class US_402_405_POM extends BaseDriver {
     public WebElement loginControl;
 
     @FindBy(linkText = "My Account")
-    public WebElement accountLink;
+    public WebElement myAccountLink;
+
+    @FindBy(css = "li[class='nav-item identifier']")
+    public WebElement adminFunc;
+
+    @FindBy(linkText = "Change Password")
+    public WebElement changePasswordButton;
+
+    @FindBy(xpath = "//div[@id='content']//h2")
+    public WebElement changePassContText;
+
+    @FindBy(linkText = "My Languages")
+    public WebElement myLanguageButton;
+
+    @FindBy(xpath = "//div[@id='content']//h2")
+    public WebElement myLanguageText;
 }
