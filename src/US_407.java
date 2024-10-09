@@ -10,59 +10,59 @@ public class US_407 extends BaseDriver {
 
     @Test
     public void patientDeletion() {
-        US_401_404_407_POM locater = new US_401_404_407_POM();
+        US_401_404_407_POM locator = new US_401_404_407_POM();
 
         driver.get(ConfigReader.getProperty("loginURL"));
 
-        wait.until(ExpectedConditions.elementToBeClickable(locater.userName));
-        locater.userName.sendKeys(ConfigReader.getProperty("username"));
+        wait.until(ExpectedConditions.elementToBeClickable(locator.userName));
+        locator.userName.sendKeys(ConfigReader.getProperty("username"));
 
-        wait.until(ExpectedConditions.elementToBeClickable(locater.password));
-        locater.password.sendKeys(ConfigReader.getProperty("password"));
+        wait.until(ExpectedConditions.elementToBeClickable(locator.password));
+        locator.password.sendKeys(ConfigReader.getProperty("password"));
 
-        int randomLocations = (int) (Math.random() * locater.locations.size());
-        String location = locater.locations.get(randomLocations).getText();
+        int randomLocations = (int) (Math.random() * locator.locations.size());
+        String location = locator.locations.get(randomLocations).getText();
 
-        wait.until(ExpectedConditions.elementToBeClickable(locater.locations.get(randomLocations)));
-        locater.locations.get(randomLocations).click();
+        wait.until(ExpectedConditions.elementToBeClickable(locator.locations.get(randomLocations)));
+        locator.locations.get(randomLocations).click();
 
-        wait.until(ExpectedConditions.elementToBeClickable(locater.loginButton));
-        locater.loginButton.click();
+        wait.until(ExpectedConditions.elementToBeClickable(locator.loginButton));
+        locator.loginButton.click();
 
-        wait.until(ExpectedConditions.visibilityOf(locater.loginControl));
-        Assert.assertTrue(locater.loginControl.getText().contains(location));
+        wait.until(ExpectedConditions.visibilityOf(locator.loginControl));
+        Assert.assertTrue(locator.loginControl.getText().contains(location));
 
-        wait.until(ExpectedConditions.visibilityOf(locater.adminControl));
-        Assert.assertTrue(locater.adminControl.getText().contains("admin"));
+        wait.until(ExpectedConditions.visibilityOf(locator.adminControl));
+        Assert.assertTrue(locator.adminControl.getText().contains("admin"));
 
-        wait.until(ExpectedConditions.elementToBeClickable(locater.findPatientButton));
-        locater.findPatientButton.click();
+        wait.until(ExpectedConditions.elementToBeClickable(locator.findPatientButton));
+        locator.findPatientButton.click();
 
-        wait.until(ExpectedConditions.visibilityOf(locater.findPatientPageControl));
-        Assert.assertTrue(locater.findPatientPageControl.getText().contains("Find Patient"));
+        wait.until(ExpectedConditions.visibilityOf(locator.findPatientPageControl));
+        Assert.assertTrue(locator.findPatientPageControl.getText().contains("Find Patient"));
 
-        wait.until(ExpectedConditions.elementToBeClickable(locater.searchBox));
-        locater.searchBox.sendKeys(ConfigReader.getProperty("usernameSecond"));
+        wait.until(ExpectedConditions.elementToBeClickable(locator.searchBox));
+        locator.searchBox.sendKeys(ConfigReader.getProperty("usernameSecond"));
 
-        wait.until(ExpectedConditions.visibilityOf(locater.patientInformation));
-        locater.patientInformation.click();
+        wait.until(ExpectedConditions.visibilityOf(locator.patientInformation));
+        locator.patientInformation.click();
 
-        wait.until(ExpectedConditions.elementToBeClickable(locater.deletePatient));
-        locater.deletePatient.click();
+        wait.until(ExpectedConditions.elementToBeClickable(locator.deletePatient));
+        locator.deletePatient.click();
 
-        wait.until(ExpectedConditions.visibilityOf(locater.deleteWindowControl));
-        Assert.assertTrue(locater.deleteWindowControl.getText().contains("Delete Patient"));
+        wait.until(ExpectedConditions.visibilityOf(locator.deleteWindowControl));
+        Assert.assertTrue(locator.deleteWindowControl.getText().contains("Delete Patient"));
 
-        wait.until(ExpectedConditions.elementToBeClickable(locater.reasonBox));
-        locater.reasonBox.sendKeys(ConfigReader.getProperty("sampleReason"));
+        wait.until(ExpectedConditions.elementToBeClickable(locator.reasonBox));
+        locator.reasonBox.sendKeys(ConfigReader.getProperty("sampleReason"));
 
-        wait.until(ExpectedConditions.elementToBeClickable(locater.buttonConfirm));
-        locater.buttonConfirm.click();
+        wait.until(ExpectedConditions.elementToBeClickable(locator.buttonConfirm));
+        locator.buttonConfirm.click();
 
-        wait.until(ExpectedConditions.elementToBeClickable(locater.searchBox));
-        locater.searchBox.sendKeys(ConfigReader.getProperty("usernameSecond"));
+        wait.until(ExpectedConditions.elementToBeClickable(locator.searchBox));
+        locator.searchBox.sendKeys(ConfigReader.getProperty("usernameSecond"));
 
-        wait.until(ExpectedConditions.visibilityOf(locater.noPatientsFound));
-        Assert.assertTrue(locater.noPatientsFound.getText().contains("No matching"));
+        wait.until(ExpectedConditions.visibilityOf(locator.noPatientsFound));
+        Assert.assertTrue(locator.noPatientsFound.getText().contains("No matching"));
     }
 }
