@@ -10,7 +10,7 @@ import org.testng.annotations.Test;
 
 public class US_402 extends BaseDriver {
 
-    @Test(dataProvider = "userPassword")
+    @Test(dataProvider = "userPassword",groups = "Smoke Test")
     public void loginPositive(String username, String password, boolean expectedResult) {
         US_402_405_POM element = new US_402_405_POM();
 
@@ -28,7 +28,7 @@ public class US_402 extends BaseDriver {
         wait.until(ExpectedConditions.elementToBeClickable(element.demoButton));
         element.demoButton.click();
 
-        wait.until(ExpectedConditions.urlToBe(ConfigReader.getProperty("URL2")));
+        wait.until(ExpectedConditions.urlToBe(ConfigReader.getProperty("demoURL")));
 
         MyFunc.scrollElement(element.exploreOpenMRS2);
         wait.until(ExpectedConditions.visibilityOf(element.exploreOpenMRS2));
