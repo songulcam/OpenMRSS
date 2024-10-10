@@ -39,7 +39,7 @@ public class US_401 extends BaseDriver {
         wait.until(ExpectedConditions.visibilityOf(locators.password));
         locators.password.sendKeys(password);
 
-        if (expectedResult) {
+        if (expectedResult){
             wait.until(ExpectedConditions.elementToBeClickable(locators.inpatientWard));
             locators.inpatientWard.click();
         }
