@@ -22,10 +22,6 @@ public class US_403 extends BaseDriver {
                 wait.until(ExpectedConditions.visibilityOf(element.languageEn));
                 MyFunc.jsClick(element.languageEn);
             }
-
-            wait.until(ExpectedConditions.elementToBeClickable(element.languageBtn));
-            element.languageBtn.click();
-
         } while (!element.languageBtn.getText().contains("EN"));
 
         wait.until(ExpectedConditions.elementToBeClickable(element.demoBtn));
