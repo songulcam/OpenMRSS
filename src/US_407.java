@@ -46,6 +46,12 @@ public class US_407 extends BaseDriver {
         wait.until(ExpectedConditions.visibilityOf(locator.patientInformation));
         locator.patientInformation.click();
 
+        wait.until(ExpectedConditions.visibilityOf(locator.givenControl));
+        Assert.assertTrue(locator.givenControl.isDisplayed());
+
+        wait.until(ExpectedConditions.visibilityOf(locator.familyNameControl));
+        Assert.assertTrue(locator.familyNameControl.isDisplayed());
+
         wait.until(ExpectedConditions.elementToBeClickable(locator.deletePatient));
         locator.deletePatient.click();
 
