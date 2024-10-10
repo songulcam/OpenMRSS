@@ -53,7 +53,7 @@ public class US_401 extends BaseDriver {
             Assert.assertTrue(locator.errorMessage.getText().contains("Please try again."));
         }
 
-        if (!expectedResult){
+        if (!expectedResult) {
             driver.get(ConfigReader.getProperty("URL"));
         }
     }
