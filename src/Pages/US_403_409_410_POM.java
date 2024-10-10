@@ -57,4 +57,44 @@ public class US_403_409_410_POM {
 
     @FindBy(id = "time-zone-warning")
     public WebElement timeZoneWarning;
+
+    @FindBy(xpath = "(//div[@id='content']//a)[7]")
+    public WebElement dataManagementBtn;
+
+    @FindBy(xpath = "//div[@id='tasks']//a")
+    public WebElement mergePatientBtn;
+
+    @FindBy(id = "patient-search")
+    public WebElement searchByName;
+
+    @FindBy(id = "patient-search-results")
+    public WebElement patientSearchResultTable;
+
+    @FindBy(xpath = "//tbody[@role='alert']//td[starts-with(text(),'100')]")
+    public List<WebElement> IDs;
+
+    @FindBy(id = "patient1-text")
+    public WebElement patientId1;
+
+    @FindBy(id = "patient2-text")
+    public WebElement patientId2;
+
+    @FindBy(id = "first-patient")
+    public WebElement firstPatient;
+
+    @FindBy(xpath = "//div[@class='messages-container']/h1")
+    public WebElement mergePatientControlMessage;
+
+    @FindBy(id = "confirm-button")
+    public WebElement yesContinueBtn;
+
+    @FindBy(xpath = "//div[@class='float-sm-right']/span")
+    public List<WebElement> IDsControl;
+
+    @FindBy(xpath = "(//div[@id='content']//a)[1]")
+    public WebElement findPatient;
+
+    @FindBy(css = "i[class='icon-home small']")
+    public WebElement pageBackHome;
+
 }
