@@ -7,8 +7,8 @@ import org.testng.annotations.Test;
 
 public class US_410 extends BaseDriver {
 
-    @Test
-    public void Test1() {
+    @Test(groups = "Regression Test")
+    public void wrongTimeZone() {
         US_403_409_410_POM element = new US_403_409_410_POM();
 
         driver.get(ConfigReader.getProperty("loginURL"));
@@ -30,6 +30,15 @@ public class US_410 extends BaseDriver {
         element.logInBtn.click();
         Assert.assertTrue(element.logInControl.getText().contains(keyWordStr));
 
+        wait.until(ExpectedConditions.visibilityOf(element.findPatient));
+        element.findPatient.click();
+
+        int randomPatientIds = (int) (Math.random() * element.IDs.size());
+        String patientIds = element.IDs.get(randomPatientIds).getText().replace("Recent","").trim();
+
+        wait.until(ExpectedConditions.elementToBeClickable(element.pageBackHome));
+        element.pageBackHome.click();
+
         wait.until(ExpectedConditions.elementToBeClickable(element.appointmentSchedulingBtn));
         element.appointmentSchedulingBtn.click();
 
@@ -37,12 +46,12 @@ public class US_410 extends BaseDriver {
         element.manageAppointmentsBtn.click();
 
         wait.until(ExpectedConditions.urlToBe(ConfigReader.getProperty("manageAppointmentsURL")));
-        element.searchById.sendKeys("100JK4"); // burası dinamik bir şekilde gelen 409 ve ya 404 den alınacak ID eklenecek
+        element.searchById.sendKeys(patientIds);
 
         wait.until(ExpectedConditions.visibilityOf(element.patientSearchResult));
         element.patientSearchResult.click();
 
-        wait.until(ExpectedConditions.urlToBe(ConfigReader.getProperty("appointmentRequestsURL")));
+        wait.until(ExpectedConditions.visibilityOf(element.timeZoneWarning));
         Assert.assertTrue(element.timeZoneWarning.getText().contains("Your computer is not set to the right time zone"));
     }
 }
