@@ -65,6 +65,7 @@ public class US_409 extends BaseDriver {
 
         int randomIDsControl=(int)(Math.random()*element.IDsControl.size());
         String randomIdsControlStr=element.IDsControl.get(randomIDsControl).getText();
+
         wait.until(ExpectedConditions.visibilityOf(element.IDsControl.get(randomIDsControl)));
         Assert.assertTrue(element.IDsControl.get(randomIDsControl).getText().contains(randomIdsControlStr));
     }
