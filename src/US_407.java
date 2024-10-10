@@ -7,7 +7,7 @@ import org.testng.annotations.Test;
 
 public class US_407 extends BaseDriver {
 
-    @Test
+    @Test(groups = "Smoke Test")
     public void patientDeletion() {
         US_401_404_407_POM locator = new US_401_404_407_POM();
 
